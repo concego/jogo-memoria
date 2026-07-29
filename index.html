@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jogo educacional acessível de memória com suporte a navegação por teclado e leitores de tela.">
+    <title>Jogo de Memória Acessível | Accessible Memory Game</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/accessibility.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal | Skip to main content</a>
+    
+    <header role="banner">
+        <div class="container">
+            <h1 id="page-title">Jogo de Memória Acessível</h1>
+            <p class="subtitle">Accessible Memory Game</p>
+            
+            <div class="language-switcher" role="toolbar" aria-label="Seletor de idioma | Language selector">
+                <button 
+                    id="lang-pt" 
+                    class="lang-btn active" 
+                    aria-pressed="true"
+                    aria-label="Português (Português do Brasil)">
+                    PT
+                </button>
+                <button 
+                    id="lang-en" 
+                    class="lang-btn" 
+                    aria-pressed="false"
+                    aria-label="English (United States)">
+                    EN
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" role="main">
+        <div class="container">
+            <!-- Game Controls -->
+            <section aria-labelledby="controls-heading">
+                <h2 id="controls-heading" class="sr-only">Controles do Jogo | Game Controls</h2>
+                
+                <div class="controls">
+                    <div class="difficulty-control">
+                        <label for="difficulty-select">
+                            <span data-i18n="difficulty">Dificuldade</span>
+                            <span class="sr-only">| Difficulty</span>
+                        </label>
+                        <select id="difficulty-select" aria-describedby="difficulty-description">
+                            <option value="easy" data-i18n="difficulty-easy">Fácil (4x4)</option>
+                            <option value="medium" selected data-i18n="difficulty-medium">Médio (4x6)</option>
+                            <option value="hard" data-i18n="difficulty-hard">Difícil (6x6)</option>
+                        </select>
+                        <small id="difficulty-description" data-i18n="difficulty-desc">Selecione a dificuldade para começar um novo jogo</small>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat-item">
+                            <span class="stat-label" data-i18n="moves">Movimentos</span>
+                            <span class="stat-label sr-only">| Moves</span>
+                            <span id="moves-count" class="stat-value" aria-live="polite">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label" data-i18n="pairs-found">Pares Encontrados</span>
+                            <span class="stat-label sr-only">| Pairs Found</span>
+                            <span id="pairs-count" class="stat-value" aria-live="polite">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label" data-i18n="time">Tempo</span>
+                            <span class="stat-label sr-only">| Time</span>
+                            <span id="timer" class="stat-value">0:00</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Game Board as Accessible Table -->
+            <section aria-labelledby="game-board-heading">
+                <h2 id="game-board-heading" data-i18n="game-board">Tabuleiro do Jogo | Game Board</h2>
+                <p id="board-instructions" class="instructions" data-i18n="board-instructions">
+                    Use as setas para navegar, Enter ou Espaço para revelar cartas | 
+                    Use arrow keys to navigate, Enter or Space to reveal cards
+                </p>
+                
+                <div class="board-wrapper">
+                    <table 
+                        id="game-board" 
+                        role="grid"
+                        aria-labelledby="game-board-heading"
+                        aria-describedby="board-instructions"
+                        class="game-board"
+                    >
+                        <tbody id="board-body">
+                            <!-- Cartas serão geradas dinamicamente | Cards will be generated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Game Status Messages -->
+            <section aria-live="polite" aria-atomic="true" role="status" id="status-messages">
+                <div id="game-message" class="game-message" role="alert"></div>
+                <div id="current-card-info" class="sr-only" aria-live="assertive"></div>
+            </section>
+        </div>
+    </main>
+
+    <footer role="contentinfo" class="footer">
+        <div class="container">
+            <p data-i18n="footer-text">Desenvolvido com ♥ para inclusão e acessibilidade | Developed with ♥ for inclusion and accessibility</p>
+            <p class="version">v1.0 - <a href="https://github.com/concego/jogo-memoria" target="_blank" rel="noopener noreferrer">GitHub</a></p>
+        </div>
+    </footer>
+
+    <script src="js/i18n.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/accessibility.js"></script>
+</body>
+</html>

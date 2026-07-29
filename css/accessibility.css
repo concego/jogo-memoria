@@ -1,0 +1,209 @@
+/* Screen Reader Only Content */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Focus Visible for Keyboard Navigation */
+:focus-visible {
+    outline: 3px solid #0052CC;
+    outline-offset: 2px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: more) {
+    :root {
+        --border-color: #000000;
+        --primary-color: #0000CC;
+        --text-primary: #000000;
+    }
+    
+    .card {
+        border-width: 4px;
+    }
+    
+    button, select {
+        border-width: 2px;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .card {
+        transition: none !important;
+    }
+}
+
+/* Forced Colors Mode */
+@media (forced-colors: active) {
+    .card {
+        border: 2px solid ButtonBorder;
+        background-color: ButtonFace;
+        color: ButtonText;
+    }
+    
+    .card:focus {
+        outline: 2px solid Highlight;
+    }
+    
+    .card.revealed {
+        background-color: Highlight;
+        color: HighlightText;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #1A1A1A;
+        --bg-secondary: #2D2D2D;
+        --text-primary: #E0E0E0;
+        --text-secondary: #A0A0A0;
+        --border-color: #404040;
+    }
+    
+    body {
+        background-color: var(--bg-primary);
+    }
+    
+    .instructions {
+        background-color: #1a3a52;
+        color: #E0E0E0;
+    }
+    
+    .game-message {
+        background-color: #1a3a52;
+        color: #87CEEB;
+    }
+}
+
+/* ARIA Live Region Announcements */
+[aria-live] {
+    position: relative;
+}
+
+/* Focus Indicator for Cards */
+.card:focus {
+    box-shadow: 0 0 0 4px rgba(0, 82, 204, 0.25);
+}
+
+/* Tab Index Management */
+[tabindex="-1"]:focus {
+    outline: 3px solid #0052CC;
+}
+
+/* Form Control Accessibility */
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: 3px solid #0052CC;
+    outline-offset: 2px;
+}
+
+/* Text Resize Accommodation */
+@media (max-width: 320px) {
+    body {
+        font-size: 14px;
+    }
+    
+    .game-board td {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* High Zoom Accommodation */
+@media (min-width: 1920px) and (zoom: 200%) {
+    .game-board td {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Disable Text Selection on Cards */
+.card {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+/* Ensure Sufficient Color Contrast */
+body {
+    color: #1A1A1A;
+    background-color: #FFFFFF;
+}
+
+.stat-value {
+    color: #0052CC;
+}
+
+.card.revealed,
+.card.matched {
+    color: #FFFFFF;
+    background-color: #28A745;
+}
+
+/* Announcement for Screen Readers */
+.announcer {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Loading State Accessibility */
+[aria-busy="true"] {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+/* Disabled State */
+[aria-disabled="true"],
+[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* Button Accessibility */
+button {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 16px;
+}
+
+/* Link Underlines for Clarity */
+a:not([class]) {
+    text-decoration: underline;
+    color: #0052CC;
+}
+
+a:not([class]):visited {
+    color: #663399;
+}
+
+/* Tooltip Support */
+[aria-label] {
+    position: relative;
+}
+
+/* Error Message Styling */
+[role="alert"] {
+    border-left: 4px solid #DC3545;
+    padding: 1rem;
+    margin: 1rem 0;
+}
